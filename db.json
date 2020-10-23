@@ -5,10 +5,6 @@
       "userLogin": "vitaliynester"
     },
     {
-      "id": 2,
-      "userLogin": "strannik4884"
-    },
-    {
       "userLogin": "typicode",
       "id": 3
     },
@@ -23,6 +19,34 @@
     {
       "userLogin": "Arti9-9",
       "id": 6
+    },
+    {
+      "userLogin": "acdcjunior",
+      "id": 7
+    },
+    {
+      "userLogin": "brunolm",
+      "id": 8
+    },
+    {
+      "userLogin": "coppernickel",
+      "id": 9
+    },
+    {
+      "userLogin": "regebro",
+      "id": 10
+    },
+    {
+      "userLogin": "Mastylina",
+      "id": 11
+    },
+    {
+      "userLogin": "G4zele",
+      "id": 12
+    },
+    {
+      "userLogin": "kifril-ltd",
+      "id": 13
     }
   ]
 }
