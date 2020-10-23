@@ -24,7 +24,7 @@ import { CalendarModel, ContributionCalendarDay, LanguageOverviewModel, UserData
 import { token } from "../../config";
 
 const Profile: React.FC = () => {
-  const { username = 'Arti9-9' } = useParams<any>();
+  const { username } : any = useParams();
   const [calendar, setCalendar] = React.useState<CalendarModel>();
   const [userData, setUserData] = React.useState<UserDataModel>();
   const [languageData, setLanguageData] = React.useState<LanguageOverviewModel[]>();
@@ -43,7 +43,7 @@ const Profile: React.FC = () => {
 
   React.useEffect(()=>{
     client.query({
-      query: gql`${queryAboutUser(username)}`
+      query: gql`${queryAboutUser(username ? username : 'Arti9-9')}`
     })
     .then(resp => {
       var data : UserDataModel = resp.data.user;
@@ -67,7 +67,7 @@ const Profile: React.FC = () => {
       setError(e.message)
     );
     client.query({
-      query: gql`${queryCalendarUser(username)}`
+      query: gql`${queryCalendarUser(username ? username : 'Arti9-9')}`
       })
       .then(resp => {
         var calendarData : CalendarModel = resp.data.user.contributionsCollection.contributionCalendar;
@@ -142,7 +142,7 @@ const Profile: React.FC = () => {
               {userData.repositories.nodes.slice(0, Math.min(6, userData.repositories.nodes.length)).map((item, index) => (
                 <RepoCard
                   key={item.name}
-                  username={username}
+                  username={username ? username : 'Arti9-9'}
                   reponame={item.name}
                   description={item.description}
                   language={item.primaryLanguage == null ? "Other" : item.primaryLanguage.name}

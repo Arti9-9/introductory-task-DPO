@@ -28,7 +28,7 @@ const Table: React.FC = () => {
       });
 
     React.useEffect(() => {
-        axios.get('http://localhost:5000/users')
+        axios.get('http://31.148.99.34:5000/users')
         .then(resp => {
             resp.data.forEach((element : any) => {
                 client.query({

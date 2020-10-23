@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from "@apollo/react-hooks";
-
 import App from './App';
+const ApolloBoost = require('apollo-boost');
+const ApolloClient = ApolloBoost.default;
 
-const client = new ApolloClient<any>({
+const client = new ApolloClient({
   uri: 'https://developer.github.com/v4/explorer/'
 });
 
