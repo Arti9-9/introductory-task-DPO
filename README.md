@@ -1,44 +1,82 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Дополнительное задание для поступления на ДПО
 
-## Available Scripts
+### Постановка задачи
+Было необходимо реализовать веб-приложение с GitHub-статистикой пользователей. Само приложение должно было состоять из двух страниц: список пользователей и страница детальной информации о пользователе. Взаимодействие с GitHub`ом необходимо производить через четвертую версию их API, а именно через GraphQL.
 
-In the project directory, you can run:
+### Разработка веб-приложения
+Для выполнения данного задания была выбрана библиотека React. Это JavaScript-библиотека для создания пользовательских интерфейсов. 
 
-### `yarn start`
+Язык для работы с этой библиотекой был выбран TypeScript. Преимуществом данного языка является относительно строгая типизация в сравнении с обычным JavaScript. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Для хранения и получения пользователей участвующих в рейтинговой таблицы был использован [json-server](https://github.com/typicode/json-server). Нам нужны методы получения данных (GET), отправка данных (POST), обновления данных (PATCH) и удаления данных (DELETE). 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Менеджером пакетов для Node был выбран Yarn.
 
-### `yarn test`
+Готовое веб-приложение можно найти по [этому](http://31.148.99.34:3000/) адресу. После перехода по данному адресу пользователя встретит таблица с пользователями и их статистикой.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Главная страница (таблица пользователей)
 
-### `yarn build`
+Столбец `Rank` показывает позицию в текущем топе. Место в данной таблице определяется по количеству коммитов на GitHub за последний месяц. Чем их больше, тем место в рейтинге выше.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Столбец `Count` показывает количество коммитов за последний месяц. Данный столбец явно показывает формирование мест в топе таблицы.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Столбец `Name` показывает имя указанное в GitHub профиле. В случае его отсутствия будет отображен логин пользователя соответствующей страницы. Данный элемет является кликабельным, при нажатии на него будет происходить переход на профиль GitHub`а выбранного пользователя.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Столбец `Profile` является ссылкой на страницу с подробной статистикой пользователя. Страница с подробной статистикой находится на ранее указанном сервере и логика его работы находится там же.
 
-### `yarn eject`
+![Alt text](images/table_example.png?raw=true "Пример таблицы")
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Страница с информацией о пользователе
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+При переходе на страницу с подробной информацией пользователь увидит знакомый дизайн GitHub`а. В левой части страницы перед пользователем будет основная информация о профиле. Данная информация берется с API GitHub v4. Правая часть страницы содержит следующие блоки:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`Repositories` - общее число репозиториев у данного пользователя.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`Random repos` - случайные 6 репозиториев пользователя. В случае, если их меньше, то будет показано все доступные репозитории. Если репозитории у данного пользователя отсутсвуют, то будет показано соответсвующее сообщение. В репозитории указывается его название, описание, язык который использовался при написании, цвет языка из GitHub, количество пользователей поставивших звёздочку репозиторию и количество "копий" данного репозитория в терминах GitHub.
 
-## Learn More
+`Activity chart` - данный блок представляет собой календарь действий пользователя (создание репозиториев, коммиты и т.д.). Сверху от календаря действий пользователя указано общее количество действий за последний год. Каждый элемент календаря представляет собой ключ-значение (ключ - дата действия, значение - количество действий в данный день). Чем темнее элемент календаря, тем больше действий происходило в данный день.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`Language overview` - данный блок показывает сколько проектов было реализовано за год на каждом из языков программирования. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Alt text](images/information_page.png?raw=true "Пример страницы с подробной информацией")
+
+## Установка репозитория на свой компьютер
+
+Для разворачивания данного проекта на своем компьютере требуется `Node.js` и пакетный менеджер `npm` или `yarn`. В данном примере будет показано установка с помощью пакетного менеджера `yarn`.
+
+### `Шаг первый (клонирование репозитория):`
+Склонируйте данный репозиторий в удобную для Вас папку
+```
+git clone https://github.com/Arti9-9/introductory-task-DPO.git
+```
+После перейдите в папку `introductory-task-DPO`
+```
+cd introductory-task-DPO/
+```
+### `Шаг второй (установка зависимостей):`
+Следующим шагом установки веб-приложения является установка его зависимостей, для этого выполните следующую команду:
+
+Для пакетного менеджера `yarn`:
+```
+yarn install
+```
+
+Для пакетного менеджера `npm`:
+```
+npm install
+```
+### `Шаг третий (запуск приложения):`
+После окончания загрузки зависимостей необходимо создать файл по следующему пути `introductory-task-DPO/gitstats/src/config.js`, который будет содержать токен доступа для авторизации в GitHub API v4. Содержимое данного файла следующее:
+```
+var config = {};
+config.token = "TOKEN";
+
+module.exports = config;
+``` 
+После создания данного файла можете запустить веб-приложение одной из следующих команд:
+
+`yarn start` - данная команда запустит экземпляр React приложение на порту `3000`.
+
+`yarn server` - данная команда зпустит экзмепляр сервера на порту `5000`. На данном сервере хранятся логины пользователей, которые будут участвовать в рейтинговой таблице.
+
+`yarn dev` - данная команда запустит сначала сервер, а потом React приложение. Порты приложений останутся без изменений.
