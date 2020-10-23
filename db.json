@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userLogin": "vitaliynester"
+    },
+    {
+      "id": 2,
+      "userLogin": "strannik4884"
+    },
+    {
+      "userLogin": "typicode",
+      "id": 3
+    },
+    {
+      "userLogin": "fabpot",
+      "id": 4
+    },
+    {
+      "userLogin": "daria-popova",
+      "id": 5
+    },
+    {
+      "userLogin": "Arti9-9",
+      "id": 6
+    }
+  ]
+}
